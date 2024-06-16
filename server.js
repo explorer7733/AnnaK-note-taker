@@ -16,7 +16,7 @@ app.use(express.static('public'));
 const apiRoutes = require('./public/routes/apiRoutes');
 const htmlRoutes = require('./public/routes/htmlRoutes');
 
-app.use ('/api', apiRoutes);
+app.use ('/api/notes', apiRoutes);
 app.use ('/', htmlRoutes);
 
 // Create listen() function, which is responsible for listening for incoming connections on the specified port

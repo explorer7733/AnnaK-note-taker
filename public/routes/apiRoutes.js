@@ -1,6 +1,8 @@
 // Import built-in Node.js 'path' module for file path
 const path = require('path');
 
+const {readFile} = require('node:fs/promises');
+
 const router = require('express').Router();
 
 // Import built-in Node.js 'fs' module
@@ -8,15 +10,19 @@ const fs = require('fs');
 
 // Import npm package to create a unique ids
 let uniqid = require('uniqid');
+let data = [];
 
 // Routing function
 // GET route to notes.json file
-router.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../db/db.json'));
+router.get('/', async (req, res) => {
+    data = await getData();
+    console.log(data);
+    res.json(data);
+   
 });
 
 // POST route to notes.json file
-router.post('/notes', (req, res) => {
+router.post('/', (req, res) => {
     let dbNotes = fs.readFileSync(path.join(__dirname, '../../db/db.json'));
     dbNotes = JSON.parse(dbNotes);
 
@@ -38,7 +44,7 @@ router.post('/notes', (req, res) => {
 });
 
 // DELETE route to notes.json file
-router.delete('/notes/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
     let dbNotes = JSON.parse(fs.readFileSync(path.join(__dirname, '../../db/db.json')));
     let deleteNotes = dbNotes.filter(note => note.id !== req.params.id);
     fs.writeFile(path.join(__dirname, '../../db/db.json'), JSON.stringify(deleteNotes), (err) => {
@@ -50,7 +56,10 @@ router.delete('/notes/:id', (req, res) => {
         }
     });
 });
-
+const getData = async () => {
+    const data = await readFile(path.join(__dirname, '../../db/db.json'), {encoding: 'utf8'});
+    return JSON.parse(data);
+}
 module.exports = router;
 
 
