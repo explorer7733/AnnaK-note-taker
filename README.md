@@ -25,8 +25,8 @@ https://annak-note-taker.onrender.com/
 
 ## Screenshots
 
-![screenshot]()
-![screenshot]()
+![1_list of notes](./screenshots/1_list%20of%20notes.png)
+![2_new note_empty field](./screenshots/2_new%20note_empty%20field.png)
 
 ## Credits
 

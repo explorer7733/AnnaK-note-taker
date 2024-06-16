@@ -13,8 +13,11 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // Routes to the apiRoutes.js file and htmlRoutes.js file
-require('../routes/apiRoutes')(app);
-require('../routes/htmlRoutes')(app);
+const apiRoutes = require('./public/routes/apiRoutes');
+const htmlRoutes = require('./public/routes/htmlRoutes');
+
+app.use ('/api', apiRoutes);
+app.use ('/', htmlRoutes);
 
 // Create listen() function, which is responsible for listening for incoming connections on the specified port
 app.listen(PORT, () =>
