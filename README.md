@@ -21,7 +21,7 @@ My goal was to create an application "Note Taker" using an Express.js back end, 
 
 To review "AnnaK-note-taker", you can click on the deployed link and the screenshot links below.
 
-https://annak-note-taker.onrender.com/
+https://annak-note-taker.onrender.com
 
 ## Screenshots
 
